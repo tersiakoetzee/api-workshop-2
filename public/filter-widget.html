@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Filter widget</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+
+	<script src="first-api.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js" integrity="sha256-hSzapznWRy/aOZkctlN03an9DxCLlN8ZCQS0lxntiHg=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs=" crossorigin="anonymous"></script>
+
+</head>
+
+<script class="brandListTemplate"  type="text/template" >
+	<option value="">select brand</option>
+	{{#each brands}}
+	<option>{{this}}</option>
+	{{/each}}
+</script>
+
+<script class="colorListTemplate"  type="text/template" >
+	<option value="">select color</option>
+	{{#each colors}}
+	<option id={{this}} value={{this}}>{{this}}</option>
+	{{/each}}
+</script>
+
+<script class="carListTemplate"  type="text/template" >
+	<table class="table-bordered">
+		<tr>
+			<th>Make</th>
+			<th>Color</th>
+			<th>Registration</th>
+			<th>Action</th>
+		</tr>
+	
+		{{#each cars}}
+		<tr>
+			<td >{{make}}</td>
+			<td>{{color}}</td>
+			<td>{{reg_number}}</td>
+			<td><input type="checkbox" class="favourite" value="" id="{{reg_number}}"></td>
+		</tr>
+		{{/each}}
+
+	<table>
+
+</script>
+
+<body>
+	<div class="container">
+		<h1>Filter widget</h1>
+
+		<form>
+			<div class="form-group">
+				<label for="brand">Select Brand</label>
+				<select class="form-control brands" id="brand">
+						
+				</select>
+			
+			</div>
+			<div class="form-group">
+				<label for="color">Select Color</label>
+				<select class="form-control colors" id="color">
+					
+				</select>
+			</div>
+
+			<button type="Filter" class="filterBtn">Filter</button>
+			<button class="addTo">Add Favorite</button>
+			<button  class="show">Show</button>
+
+			<div class="filtered">
+
+			</div>
+		</form>
+		
+	</div>
+</body>
+
+</html>
